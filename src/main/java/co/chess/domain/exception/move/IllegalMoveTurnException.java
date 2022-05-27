@@ -1,6 +1,5 @@
 package co.chess.domain.exception.move;
 
-import co.chess.domain.exception.MoveException;
 import co.chess.domain.piece.Team;
 
 public class IllegalMoveTurnException extends MoveException {

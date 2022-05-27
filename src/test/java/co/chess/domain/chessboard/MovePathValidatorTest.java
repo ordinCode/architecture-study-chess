@@ -3,7 +3,7 @@ package co.chess.domain.chessboard;
 import co.chess.domain.chessboard.tile.File;
 import co.chess.domain.chessboard.tile.Rank;
 import co.chess.domain.chessboard.tile.Tile;
-import co.chess.domain.exception.MoveException;
+import co.chess.domain.exception.move.MoveException;
 import co.chess.domain.move.general.CrossMove;
 import co.chess.domain.move.general.GeneralMovePattern;
 import co.chess.domain.move.general.StraightMove;

@@ -8,7 +8,7 @@ import co.chess.consolechess.utils.PieceSymbolConverter;
 import co.chess.domain.ChessGame;
 import co.chess.domain.dto.MoveRequest;
 import co.chess.domain.dto.PromotionRequest;
-import co.chess.domain.exception.MoveException;
+import co.chess.domain.exception.move.MoveException;
 import co.chess.domain.piece.PieceType;
 
 public class ConsoleChessService {

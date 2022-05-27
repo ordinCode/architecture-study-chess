@@ -5,7 +5,7 @@ import co.chess.consolechess.UserInputType;
 import co.chess.consolechess.exception.InputException;
 import co.chess.consolechess.service.ConsoleChessService;
 import co.chess.domain.ChessGame;
-import co.chess.domain.exception.MoveException;
+import co.chess.domain.exception.move.MoveException;
 
 import java.util.Map;
 import java.util.function.BiConsumer;
