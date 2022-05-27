@@ -73,6 +73,14 @@ public class ChessGame {
         turn = Team.BLACK;
     }
 
+    public void promotion(PromotionRequest promotionRequest) {
+        chessBoard.promotion(promotionRequest.getPieceType());
+    }
+
+    public boolean isPromotion() {
+        return chessBoard.isPromotion();
+    }
+
     public ChessBoard getChessBoard() {
         return chessBoard;
     }
@@ -83,13 +91,5 @@ public class ChessGame {
 
     public Team getTurn() {
         return turn;
-    }
-
-    public boolean isPromotion() {
-        return chessBoard.isPromotion();
-    }
-
-    public void promotion(PromotionRequest promotionRequest) {
-        chessBoard.promotion(promotionRequest.getPieceType());
     }
 }

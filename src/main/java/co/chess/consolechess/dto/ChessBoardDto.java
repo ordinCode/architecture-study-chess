@@ -8,10 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ChessBoardDto {
-    private Map<TileDto, PieceDto> tilePieceMap;
-
-    public ChessBoardDto() {
-    }
+    private final Map<TileDto, PieceDto> tilePieceMap;
 
     public ChessBoardDto(Map<TileDto, PieceDto> tilePieceMap) {
         this.tilePieceMap = tilePieceMap;
