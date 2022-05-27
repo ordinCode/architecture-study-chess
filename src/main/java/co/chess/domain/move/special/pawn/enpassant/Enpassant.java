@@ -3,6 +3,7 @@ package co.chess.domain.move.special.pawn.enpassant;
 import co.chess.domain.chessboard.tile.Tile;
 import co.chess.domain.move.special.config.SpecialMovePattern;
 import co.chess.domain.piece.config.Piece;
+import co.chess.domain.utils.TileUtil;
 
 import java.util.Map;
 
@@ -18,7 +19,7 @@ public class Enpassant extends SpecialMovePattern {
     }
 
     public static Enpassant of(Tile source, Tile target) {
-        return new Enpassant(source, target, new Tile(source.getRank(), target.getFile()));
+        return new Enpassant(source, target, TileUtil.findEnpassantAttackedTile(source, target));
     }
 
     @Override

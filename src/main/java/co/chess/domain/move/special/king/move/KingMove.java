@@ -16,7 +16,7 @@ public class KingMove extends GeneralMovePattern {
     }
 
     public static KingMove of(Tile source, Tile target) {
-        return new KingMove(DirectionFactory.of(source, target), TileUtil.getCrossDistance(source, target));
+        return new KingMove(DirectionFactory.of(source, target), TileUtil.calculateCrossDistance(source, target));
     }
 
     @Override

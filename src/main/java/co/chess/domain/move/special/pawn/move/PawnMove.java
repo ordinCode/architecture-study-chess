@@ -18,7 +18,7 @@ public class PawnMove extends GeneralMovePattern {
     public static PawnMove of(Tile source, Tile target) {
         return new PawnMove(
                 DirectionFactory.of(source, target),
-                TileUtil.getStraightDistance(source, target)
+                TileUtil.calculateStraightDistance(source, target)
         );
     }
 

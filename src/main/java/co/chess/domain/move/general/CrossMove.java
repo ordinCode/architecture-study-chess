@@ -20,7 +20,7 @@ public class CrossMove extends GeneralMovePattern {
         if (!GeneralMovePatternChecker.isCrossPattern(source, target)) {
             throw new IllegalArgumentException();
         }
-        return new CrossMove(DirectionFactory.of(source, target), TileUtil.getCrossDistance(source, target));
+        return new CrossMove(DirectionFactory.of(source, target), TileUtil.calculateCrossDistance(source, target));
     }
 
     @Override
