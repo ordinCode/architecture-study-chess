@@ -1,30 +1,14 @@
-# '만들면서 배우는 클린 아키텍처' 스터디
-## 콘솔 체스
+# 아키텍처 스터디
+> 체스 도메인을 활용하여 아키텍처 스터디 진행
 
-### 기능 설명
-- 콘솔 UI에서 체스 게임을 할 수 있는 기능을 구현한다.
+## 스터디 진행 방법
+- step1. 콘솔 기반의 체스 게임을 만든다.
+- step2. [만들면서 배우는 클린 아키텍처](https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=283437942) 를 스터디 한다.
+- step3. 책의 내용을 참고하여 콘솔 체스 게임을 리펙토링 해본다.
+- step4. 콘솔 체스 게임에 DB를 연동해보면서 Hexagonal Architecture 구조로 설계해본다.
+- step5. Spring Framework 에 적용해본다.
 
-```
-> 체스 게임을 시작합니다.
-> 게임 이동 : move source위치 target위치 - 예. move b2 b3
-
-RNBQKBNR
-PPPPPPPP
-........
-........
-........
-........
-pppppppp
-rnbqkbnr
-
-move b2 b3
-RNBQKBNR
-PPPPPPPP
-........
-........
-........
-.p......
-p.pppppp
-rnbqkbnr
-
-```
+## 참고 자료
+- [만들면서 배우는 클린 아키텍처](https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=283437942)
+- [클린 아키텍처](https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=202322454)
+- [체스 위키](https://ko.wikipedia.org/wiki/%EC%B2%B4%EC%8A%A4_%EA%B7%9C%EC%B9%99)
