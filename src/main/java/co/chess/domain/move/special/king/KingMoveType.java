@@ -24,7 +24,7 @@ public enum KingMoveType {
         this.kingMovePatternCreator = kingMovePatternCreator;
     }
 
-    public boolean isSatisfy(Tile source, Tile target, Map<Tile, Piece> board) {
+    public boolean isConform(Tile source, Tile target, Map<Tile, Piece> board) {
         return this.kingMoveChecker.isConform(source, target, board);
     }
 

@@ -6,6 +6,7 @@ import co.chess.domain.exception.move.InvalidMovePatternException;
 import co.chess.domain.move.config.MovePattern;
 import co.chess.domain.move.general.GeneralMovePattern;
 import co.chess.domain.move.general.GeneralMovePatternFinder;
+import co.chess.domain.piece.Pawn;
 import co.chess.domain.piece.config.GeneralMovePiece;
 import co.chess.domain.piece.config.Piece;
 import co.chess.domain.piece.config.SpecialMovePiece;
@@ -14,7 +15,7 @@ import java.util.Map;
 import java.util.Optional;
 
 public class PieceMovePatternMatcher {
-    public static MovePattern findMovePattern(Tile source, Tile target, Map<Tile, Piece> board) {
+    public static MovePattern findMovePattern(Tile source, Tile target, Map<Tile, Piece> board, Tile justNowPawnJumpedTile) {
         Piece sourcePiece = Optional.ofNullable(board.get(source))
                 .orElseThrow(() -> new MoveException("source 위치에 말이 존재하지 않습니다."));
 
@@ -25,15 +26,20 @@ public class PieceMovePatternMatcher {
                     }
                 });
 
+        if (sourcePiece instanceof Pawn) {
+            Pawn pawn = (Pawn) sourcePiece;
+            return pawn.findMovePattern(source, target, board, justNowPawnJumpedTile);
+        }
+
         if (sourcePiece instanceof SpecialMovePiece) {
             SpecialMovePiece specialMovePiece = (SpecialMovePiece) sourcePiece;
             return specialMovePiece.findMovePattern(source, target, board);
         }
 
-        return getGeneralMovePattern(source, target, (GeneralMovePiece) sourcePiece);
+        return findGeneralMovePattern(source, target, (GeneralMovePiece) sourcePiece);
     }
 
-    private static MovePattern getGeneralMovePattern(Tile source, Tile target, GeneralMovePiece sourcePiece) {
+    private static MovePattern findGeneralMovePattern(Tile source, Tile target, GeneralMovePiece sourcePiece) {
         GeneralMovePattern movePattern = GeneralMovePatternFinder.find(source, target);
         if (sourcePiece.isAvailablePattern(movePattern)) {
             return movePattern;

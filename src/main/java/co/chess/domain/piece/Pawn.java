@@ -6,22 +6,25 @@ import co.chess.domain.exception.move.InvalidMovePatternException;
 import co.chess.domain.move.Direction;
 import co.chess.domain.move.config.MovePattern;
 import co.chess.domain.move.special.pawn.PawnMoveType;
+import co.chess.domain.move.special.pawn.enpassant.Enpassant;
+import co.chess.domain.move.special.pawn.enpassant.EnpassantChecker;
 import co.chess.domain.piece.config.Piece;
-import co.chess.domain.piece.config.SpecialMovePiece;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-public class Pawn extends SpecialMovePiece {
+public class Pawn extends Piece {
     public Pawn(Team team) {
         super(team, PieceType.PAWN);
     }
 
-    @Override
-    public MovePattern findMovePattern(Tile source, Tile target, Map<Tile, Piece> board) {
+    public MovePattern findMovePattern(Tile source, Tile target, Map<Tile, Piece> board, Tile justNowPawnJumpedTile) {
+        if (EnpassantChecker.isConformPawnEnpassantAttack(source, target, board, justNowPawnJumpedTile)) {
+            return Enpassant.of(source, target);
+        }
         return Arrays.stream(PawnMoveType.values())
-                .filter(pawnMoveType -> pawnMoveType.isSatisfy(source, target, board))
+                .filter(pawnMoveType -> pawnMoveType.isConform(source, target, board))
                 .findAny()
                 .map(satisfiedPattern -> satisfiedPattern.toObj(source, target))
                 .orElseThrow(InvalidMovePatternException::new);

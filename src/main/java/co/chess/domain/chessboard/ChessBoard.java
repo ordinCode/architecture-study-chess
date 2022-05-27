@@ -1,13 +1,13 @@
 package co.chess.domain.chessboard;
 
-import co.chess.domain.PawnJumpRecorder;
 import co.chess.domain.chessboard.tile.Rank;
 import co.chess.domain.chessboard.tile.Tile;
 import co.chess.domain.move.config.MovePattern;
 import co.chess.domain.move.special.config.SpecialMovePattern;
-import co.chess.domain.piece.config.Piece;
+import co.chess.domain.move.special.pawn.move.PawnMove;
 import co.chess.domain.piece.PieceType;
 import co.chess.domain.piece.Team;
+import co.chess.domain.piece.config.Piece;
 import co.chess.domain.utils.PromotionChecker;
 
 import java.util.Map;
@@ -15,9 +15,11 @@ import java.util.Optional;
 
 public class ChessBoard {
     private final Map<Tile, Piece> board;
+    private Tile justNowPawnJumpedTile;
 
     public ChessBoard(Map<Tile, Piece> board) {
         this.board = board;
+        this.justNowPawnJumpedTile = null;
     }
 
     public Map<Tile, Piece> getBoard() {
@@ -25,13 +27,13 @@ public class ChessBoard {
     }
 
     public void move(Tile source, Tile target) {
-        MovePattern movePattern = PieceMovePatternMatcher.findMovePattern(source, target, board);
+        MovePattern movePattern = PieceMovePatternMatcher.findMovePattern(source, target, board, justNowPawnJumpedTile);
         movePattern.validatePath(source, board);
         movePiece(source, target, movePattern);
     }
 
     private void movePiece(Tile source, Tile target, MovePattern movePattern) {
-        PawnJumpRecorder.recordPawnJumpedTileLatest(target, movePattern);
+        recordPawnJumpedTileLatest(target, movePattern);
 
         if (movePattern instanceof SpecialMovePattern) {
             SpecialMovePattern specialMovePattern = (SpecialMovePattern) movePattern;
@@ -43,6 +45,17 @@ public class ChessBoard {
         piece.move();
         board.put(target, piece);
         board.remove(source);
+    }
+
+    private void recordPawnJumpedTileLatest(Tile target, MovePattern movePattern) {
+        if (movePattern instanceof PawnMove) {
+            PawnMove pawnForwardMove = (PawnMove) movePattern;
+            if (pawnForwardMove.getMoveCount() == 2) {
+                this.justNowPawnJumpedTile = target;
+                return;
+            }
+            this.justNowPawnJumpedTile = null;
+        }
     }
 
     public Optional<Piece> getPieceByTile(Tile tile) {

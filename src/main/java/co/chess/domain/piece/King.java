@@ -18,7 +18,7 @@ public class King extends SpecialMovePiece {
     @Override
     public MovePattern findMovePattern(Tile source, Tile target, Map<Tile, Piece> board) {
         return Arrays.stream(KingMoveType.values())
-                .filter(kingMoveType -> kingMoveType.isSatisfy(source, target, board))
+                .filter(kingMoveType -> kingMoveType.isConform(source, target, board))
                 .findAny()
                 .map(satisfiedPattern -> satisfiedPattern.toObj(source, target))
                 .orElseThrow(InvalidMovePatternException::new);

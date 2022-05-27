@@ -1,11 +1,9 @@
 package co.chess.domain.piece;
 
-import co.chess.domain.PawnJumpRecorder;
 import co.chess.domain.chessboard.tile.File;
 import co.chess.domain.chessboard.tile.Rank;
 import co.chess.domain.chessboard.tile.Tile;
 import co.chess.domain.exception.move.InvalidMovePatternException;
-import co.chess.domain.move.special.pawn.move.PawnMove;
 import co.chess.domain.piece.config.Piece;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -55,7 +53,7 @@ class PawnTest {
     @MethodSource("validateMoveProvider")
     void name(Team team, Tile source, Tile target) {
         Pawn pawn = new Pawn(team);
-        pawn.findMovePattern(source, target, board);
+        pawn.findMovePattern(source, target, board, null);
     }
 
     static Stream<Arguments> validateMoveProvider() {
@@ -78,7 +76,7 @@ class PawnTest {
     @MethodSource("notValidateMoveProvider")
     void findMovePattern2(Team team, Tile source, Tile target) {
         Pawn pawn = new Pawn(team);
-        Assertions.assertThatThrownBy(() -> pawn.findMovePattern(source, target, board))
+        Assertions.assertThatThrownBy(() -> pawn.findMovePattern(source, target, board, null))
                 .isInstanceOf(InvalidMovePatternException.class);
     }
 
@@ -103,12 +101,10 @@ class PawnTest {
         Pawn pawn = new Pawn(team);
 
         //then
-        pawn.findMovePattern(source, target, board);
+        pawn.findMovePattern(source, target, board, new Tile(Rank.FOUR, File.F));
     }
 
     static Stream<Arguments> validateAttackProvider() {
-        PawnMove pawnMove = PawnMove.of(new Tile(Rank.TWO, File.F), new Tile(Rank.FOUR, File.F));
-        PawnJumpRecorder.recordPawnJumpedTileLatest(new Tile(Rank.FOUR, File.F), pawnMove);
         return Stream.of(
                 //d2 백팀의 공격
                 Arguments.arguments(Team.WHITE, new Tile(Rank.TWO, File.D), new Tile(Rank.THREE, File.C), board),
@@ -126,7 +122,7 @@ class PawnTest {
     @MethodSource("notValidateAttackProvider")
     void name3(Team team, Tile source, Tile target, Map<Tile, Piece> board) {
         Pawn pawn = new Pawn(team);
-        Assertions.assertThatThrownBy(() -> pawn.findMovePattern(source, target, board))
+        Assertions.assertThatThrownBy(() -> pawn.findMovePattern(source, target, board, null))
                 .isInstanceOf(InvalidMovePatternException.class);
     }
 
