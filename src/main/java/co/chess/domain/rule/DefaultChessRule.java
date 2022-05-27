@@ -4,9 +4,9 @@ import co.chess.domain.chessboard.tile.File;
 import co.chess.domain.chessboard.tile.Rank;
 import co.chess.domain.chessboard.tile.Tile;
 import co.chess.domain.chessboard.tile.TileFactory;
-import co.chess.domain.piece.config.Piece;
 import co.chess.domain.piece.PieceType;
 import co.chess.domain.piece.Team;
+import co.chess.domain.piece.config.Piece;
 import co.chess.domain.piece.factory.PieceFactory;
 
 import java.util.HashMap;

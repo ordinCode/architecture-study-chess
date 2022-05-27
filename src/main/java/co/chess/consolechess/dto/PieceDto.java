@@ -1,8 +1,8 @@
 package co.chess.consolechess.dto;
 
-import co.chess.domain.piece.config.Piece;
 import co.chess.domain.piece.PieceType;
 import co.chess.domain.piece.Team;
+import co.chess.domain.piece.config.Piece;
 
 public class PieceDto {
     private Team team;

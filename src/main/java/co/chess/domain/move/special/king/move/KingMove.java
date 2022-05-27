@@ -2,7 +2,6 @@ package co.chess.domain.move.special.king.move;
 
 import co.chess.domain.chessboard.tile.Tile;
 import co.chess.domain.move.Direction;
-import co.chess.domain.move.DirectionFactory;
 import co.chess.domain.move.general.GeneralMovePattern;
 import co.chess.domain.utils.TileUtil;
 
@@ -16,7 +15,7 @@ public class KingMove extends GeneralMovePattern {
     }
 
     public static KingMove of(Tile source, Tile target) {
-        return new KingMove(DirectionFactory.of(source, target), TileUtil.calculateCrossDistance(source, target));
+        return new KingMove(Direction.from(source, target), TileUtil.calculateCrossDistance(source, target));
     }
 
     @Override

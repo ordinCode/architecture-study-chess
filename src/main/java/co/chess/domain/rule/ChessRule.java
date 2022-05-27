@@ -1,8 +1,8 @@
 package co.chess.domain.rule;
 
 import co.chess.domain.chessboard.tile.Tile;
-import co.chess.domain.piece.config.Piece;
 import co.chess.domain.piece.Team;
+import co.chess.domain.piece.config.Piece;
 
 import java.util.Map;
 

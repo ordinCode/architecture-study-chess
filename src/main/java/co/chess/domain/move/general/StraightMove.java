@@ -2,7 +2,6 @@ package co.chess.domain.move.general;
 
 import co.chess.domain.chessboard.tile.Tile;
 import co.chess.domain.move.Direction;
-import co.chess.domain.move.DirectionFactory;
 
 import java.util.Objects;
 
@@ -19,7 +18,7 @@ public class StraightMove extends GeneralMovePattern {
         if (!GeneralMovePatternChecker.isStraightPattern(source, target)) {
             throw new IllegalArgumentException();
         }
-        return new StraightMove(DirectionFactory.of(source, target), findCount(source, target));
+        return new StraightMove(Direction.from(source, target), findCount(source, target));
     }
 
     private static int findCount(Tile source, Tile target) {

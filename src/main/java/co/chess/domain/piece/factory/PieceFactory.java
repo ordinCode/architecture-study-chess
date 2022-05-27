@@ -4,11 +4,11 @@ import co.chess.domain.piece.Bishop;
 import co.chess.domain.piece.King;
 import co.chess.domain.piece.Knight;
 import co.chess.domain.piece.Pawn;
+import co.chess.domain.piece.PieceType;
 import co.chess.domain.piece.Queen;
 import co.chess.domain.piece.Rook;
-import co.chess.domain.piece.config.Piece;
-import co.chess.domain.piece.PieceType;
 import co.chess.domain.piece.Team;
+import co.chess.domain.piece.config.Piece;
 
 import java.util.HashSet;
 import java.util.Set;

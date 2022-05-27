@@ -2,7 +2,6 @@ package co.chess.domain.move.special.pawn.move;
 
 import co.chess.domain.chessboard.tile.Tile;
 import co.chess.domain.move.Direction;
-import co.chess.domain.move.DirectionFactory;
 import co.chess.domain.move.general.GeneralMovePattern;
 import co.chess.domain.utils.TileUtil;
 
@@ -17,7 +16,7 @@ public class PawnMove extends GeneralMovePattern {
 
     public static PawnMove of(Tile source, Tile target) {
         return new PawnMove(
-                DirectionFactory.of(source, target),
+                Direction.from(source, target),
                 TileUtil.calculateStraightDistance(source, target)
         );
     }

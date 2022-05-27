@@ -2,7 +2,6 @@ package co.chess.domain.move.general;
 
 import co.chess.domain.chessboard.tile.Tile;
 import co.chess.domain.move.Direction;
-import co.chess.domain.move.DirectionFactory;
 import co.chess.domain.utils.TileUtil;
 
 import java.util.Objects;
@@ -20,7 +19,7 @@ public class CrossMove extends GeneralMovePattern {
         if (!GeneralMovePatternChecker.isCrossPattern(source, target)) {
             throw new IllegalArgumentException();
         }
-        return new CrossMove(DirectionFactory.of(source, target), TileUtil.calculateCrossDistance(source, target));
+        return new CrossMove(Direction.from(source, target), TileUtil.calculateCrossDistance(source, target));
     }
 
     @Override
