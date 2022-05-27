@@ -26,7 +26,7 @@ public class ChessGame {
         return new ChessGame(
                 GameState.RUNNING,
                 chessRule.getFirstTurn(),
-                new ChessBoard(chessRule.settingInitChessBoard()),
+                ChessBoard.init(chessRule.settingInitChessBoard()),
                 chessRule
         );
     }

@@ -17,13 +17,13 @@ public class ChessBoard {
     private final Map<Tile, Piece> board;
     private Tile justNowPawnJumpedTile;
 
-    public ChessBoard(Map<Tile, Piece> board) {
+    public ChessBoard(Map<Tile, Piece> board, Tile justNowPawnJumpedTile) {
         this.board = board;
-        this.justNowPawnJumpedTile = null;
+        this.justNowPawnJumpedTile = justNowPawnJumpedTile;
     }
 
-    public Map<Tile, Piece> getBoard() {
-        return board;
+    public static ChessBoard init(Map<Tile, Piece> board) {
+        return new ChessBoard(board, null);
     }
 
     public void move(Tile source, Tile target) {
@@ -58,10 +58,6 @@ public class ChessBoard {
         }
     }
 
-    public Optional<Piece> getPieceByTile(Tile tile) {
-        return Optional.ofNullable(board.get(tile));
-    }
-
     public boolean isPromotion() {
         return PromotionChecker.isPromotion(board);
     }
@@ -73,11 +69,19 @@ public class ChessBoard {
         });
     }
 
+    public Optional<Piece> getPieceByTile(Tile tile) {
+        return Optional.ofNullable(board.get(tile));
+    }
+
     private Team getTeamByPromotionTile(Tile tile) {
         Team team = Team.WHITE;
         if (tile.getRank() == Rank.ONE) {
             team = Team.BLACK;
         }
         return team;
+    }
+
+    public Map<Tile, Piece> getBoard() {
+        return board;
     }
 }
