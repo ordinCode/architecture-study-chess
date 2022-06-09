@@ -1,4 +1,4 @@
-package co.chess.domain.rule;
+package co.chess.domain.rule.defaultrule;
 
 import co.chess.domain.chessboard.tile.File;
 import co.chess.domain.chessboard.tile.Rank;
@@ -10,44 +10,17 @@ import co.chess.domain.piece.config.Piece;
 import co.chess.domain.piece.factory.PieceFactory;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
-public class DefaultChessRule implements ChessRule {
-    @Override
-    public Team findWinner(Map<Tile, Piece> board) {
-        List<Piece> collect = board.values().stream()
-                .filter(piece -> piece.getType() == PieceType.KING)
-                .collect(Collectors.toList());
-        if (collect.size() >= 2) {
-            throw new IllegalArgumentException();
-        }
-        return collect.get(0).getTeam();
-    }
-
-    @Override
-    public boolean isGameOver(Map<Tile, Piece> board) {
-        List<Piece> kings = board.values().stream()
-                .filter(piece -> piece.equalsBy(PieceType.KING))
-                .collect(Collectors.toList());
-        return kings.size() == 1;
-    }
-
-    @Override
-    public Team getFirstTurn() {
-        return Team.WHITE;
-    }
-
-    @Override
-    public Map<Tile, Piece> settingInitChessBoard() {
+class DefaultChessBoardInitializer {
+    public static Map<Tile, Piece> settingInitChessBoard() {
         Map<Tile, Piece> board = new HashMap<>();
         putWhitePieces(board);
         putBlackPieces(board);
         return board;
     }
 
-    private void putWhitePieces(Map<Tile, Piece> board) {
+    private static void putWhitePieces(Map<Tile, Piece> board) {
         board.put(TileFactory.from("a1"), PieceFactory.of(Team.WHITE, PieceType.ROOK));
         board.put(TileFactory.from("b1"), PieceFactory.of(Team.WHITE, PieceType.KNIGHT));
         board.put(TileFactory.from("c1"), PieceFactory.of(Team.WHITE, PieceType.BISHOP));
@@ -59,13 +32,13 @@ public class DefaultChessRule implements ChessRule {
         putWhitePawn(board);
     }
 
-    private void putWhitePawn(Map<Tile, Piece> board) {
+    private static void putWhitePawn(Map<Tile, Piece> board) {
         for (File file : File.values()) {
             board.put(new Tile(Rank.TWO, file), PieceFactory.of(Team.WHITE, PieceType.PAWN));
         }
     }
 
-    private void putBlackPieces(Map<Tile, Piece> board) {
+    private static void putBlackPieces(Map<Tile, Piece> board) {
         board.put(TileFactory.from("a8"), PieceFactory.of(Team.BLACK, PieceType.ROOK));
         board.put(TileFactory.from("b8"), PieceFactory.of(Team.BLACK, PieceType.KNIGHT));
         board.put(TileFactory.from("c8"), PieceFactory.of(Team.BLACK, PieceType.BISHOP));
@@ -77,7 +50,7 @@ public class DefaultChessRule implements ChessRule {
         putBlackPawn(board);
     }
 
-    private void putBlackPawn(Map<Tile, Piece> board) {
+    private static void putBlackPawn(Map<Tile, Piece> board) {
         for (File file : File.values()) {
             board.put(new Tile(Rank.SEVEN, file), PieceFactory.of(Team.BLACK, PieceType.PAWN));
         }

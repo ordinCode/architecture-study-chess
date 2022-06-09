@@ -19,7 +19,7 @@ import co.chess.domain.piece.PieceType;
 import co.chess.domain.piece.Queen;
 import co.chess.domain.piece.Rook;
 import co.chess.domain.piece.Team;
-import co.chess.domain.rule.DefaultChessRule;
+import co.chess.domain.rule.defaultrule.DefaultChessRule;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.TestFactory;
