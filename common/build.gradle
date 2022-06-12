@@ -1,0 +1,4 @@
+jar { enabled = true }
+
+group 'co.architecture.common'
+version '1'

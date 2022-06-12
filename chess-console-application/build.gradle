@@ -1,0 +1,7 @@
+dependencies {
+    implementation project(":chess-domain")
+    implementation project(":common")
+}
+
+group 'co.architecture.console'
+version '1'

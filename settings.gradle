@@ -1,2 +1,5 @@
 rootProject.name = 'architecture-study-chess'
+include 'chess-domain'
+include 'chess-console-application'
+include 'common'
 
