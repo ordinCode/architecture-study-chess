@@ -1,12 +1,14 @@
 package co.chess.consolechess.ui;
 
+import co.chess.chess.ChessGame;
 import co.chess.consolechess.dto.ChessBoardDto;
 import co.chess.consolechess.dto.PieceDto;
 import co.chess.consolechess.dto.TileDto;
+import co.chess.consolechess.gamefacory.ConsoleChessGameFactory;
 import co.chess.consolechess.utils.PieceSymbolConverter;
-import co.chess.domain.chessboard.tile.File;
-import co.chess.domain.chessboard.tile.Rank;
-import co.chess.domain.piece.Team;
+import co.chess.chess.chessboard.tile.File;
+import co.chess.chess.chessboard.tile.Rank;
+import co.chess.chess.piece.Team;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -15,7 +17,7 @@ import java.util.Optional;
 
 public class OutputView {
     private static final String INTRO = "> 체스 게임을 시작합니다.\n" +
-            "게임 시작은 start, 종료는 end 명령을 입력하세요.";
+            "종료는 end 명령을 입력하세요.";
     public static final String GAME_MOVE_GUIDE = "게임 이동 : move source위치 target위치 - 예. move b2 b3\n" +
             "**캐슬링 : move kingSource kingTarget - 예. move e8 g8";
     public static final String PROMOTION_GUIDE = "프로모션을 진행해주세요\n" +
@@ -58,7 +60,9 @@ public class OutputView {
         return stringBuilder.toString();
     }
 
-    public static void printGameOver(Team winner) {
+    public static void printGameOver() {
+        ChessGame chessGame = ConsoleChessGameFactory.getInstance();
+        Team winner = chessGame.findWinner();
         if (winner != null) {
             System.out.printf("우승자는 %s팀\n", winner.name());
         }

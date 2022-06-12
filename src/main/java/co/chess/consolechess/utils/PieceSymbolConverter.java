@@ -1,14 +1,14 @@
 package co.chess.consolechess.utils;
 
 import co.chess.consolechess.dto.PieceDto;
-import co.chess.domain.piece.PieceType;
-import co.chess.domain.piece.Team;
+import co.chess.chess.piece.PieceType;
+import co.chess.chess.piece.Team;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class PieceSymbolConverter {
-    private static Map<PieceType, String> mapper = new HashMap<>();
+    private static final Map<PieceType, String> mapper = new HashMap<>();
 
     static {
         mapper.put(PieceType.KING, "k");

@@ -1,7 +1,7 @@
 package co.chess.consolechess.dto;
 
-import co.chess.domain.chessboard.tile.File;
-import co.chess.domain.chessboard.tile.Rank;
+import co.chess.chess.chessboard.tile.File;
+import co.chess.chess.chessboard.tile.Rank;
 
 import java.util.Objects;
 

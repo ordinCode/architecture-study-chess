@@ -1,8 +1,8 @@
 package co.chess.consolechess.dto;
 
-import co.chess.domain.chessboard.ChessBoard;
-import co.chess.domain.chessboard.tile.Tile;
-import co.chess.domain.piece.config.Piece;
+import co.chess.chess.chessboard.ChessBoard;
+import co.chess.chess.chessboard.tile.Tile;
+import co.chess.chess.piece.config.Piece;
 
 import java.util.HashMap;
 import java.util.Map;

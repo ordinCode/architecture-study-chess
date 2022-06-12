@@ -1,6 +1,8 @@
 package co.chess.consolechess.ui;
 
 import co.chess.common.StringUtil;
+import co.chess.consolechess.UserInputMapper;
+import co.chess.consolechess.UserInputType;
 
 import java.util.Scanner;
 
