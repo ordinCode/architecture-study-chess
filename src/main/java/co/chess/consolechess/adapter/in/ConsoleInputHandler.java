@@ -1,11 +1,9 @@
 package co.chess.consolechess.adapter.in;
 
-import co.chess.chess.ChessGame;
 import co.chess.chess.exception.move.MoveException;
-import co.chess.consolechess.UserInputMapper;
-import co.chess.consolechess.UserInputType;
-import co.chess.consolechess.exception.InputException;
-import co.chess.consolechess.gamefacory.ConsoleChessGameFactory;
+import co.chess.consolechess.ui.input.UserInputMapper;
+import co.chess.consolechess.ui.input.UserInputType;
+import co.chess.consolechess.ui.input.exception.InputException;
 import co.chess.consolechess.port.in.MovePieceCommand;
 import co.chess.consolechess.port.in.PromotionCommand;
 import co.chess.consolechess.ui.OutputView;

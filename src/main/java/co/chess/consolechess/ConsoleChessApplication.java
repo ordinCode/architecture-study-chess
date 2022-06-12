@@ -7,8 +7,8 @@ import co.chess.consolechess.dto.ChessBoardDto;
 import co.chess.consolechess.gamefacory.ConsoleChessGameFactory;
 import co.chess.consolechess.port.in.ChessMoveUseCase;
 import co.chess.consolechess.service.ConsoleChessService;
-import co.chess.consolechess.ui.InputView;
 import co.chess.consolechess.ui.OutputView;
+import co.chess.consolechess.ui.input.InputView;
 
 public class ConsoleChessApplication {
     public static void main(String[] args) {

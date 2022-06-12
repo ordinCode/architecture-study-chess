@@ -5,11 +5,8 @@ import co.chess.chess.piece.Team;
 import co.chess.chess.piece.config.Piece;
 
 public class PieceDto {
-    private Team team;
-    private PieceType pieceType;
-
-    public PieceDto() {
-    }
+    private final Team team;
+    private final PieceType pieceType;
 
     public PieceDto(Team team, PieceType pieceType) {
         this.team = team;

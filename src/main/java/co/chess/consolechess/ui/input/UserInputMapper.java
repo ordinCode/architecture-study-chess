@@ -1,6 +1,6 @@
-package co.chess.consolechess;
+package co.chess.consolechess.ui.input;
 
-import static co.chess.consolechess.ui.InputView.COMMAND_DELIMITER;
+import static co.chess.consolechess.ui.input.InputView.COMMAND_DELIMITER;
 
 public class UserInputMapper {
     public static UserInputType findUserInputType(String userInput) {

@@ -1,4 +1,4 @@
-package co.chess.consolechess.exception;
+package co.chess.consolechess.ui.input.exception;
 
 public class InvalidMoveCommandException extends InputException {
 

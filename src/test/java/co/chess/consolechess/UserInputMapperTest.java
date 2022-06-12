@@ -1,6 +1,8 @@
 package co.chess.consolechess;
 
-import co.chess.consolechess.exception.InputException;
+import co.chess.consolechess.ui.input.UserInputMapper;
+import co.chess.consolechess.ui.input.UserInputType;
+import co.chess.consolechess.ui.input.exception.InputException;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;

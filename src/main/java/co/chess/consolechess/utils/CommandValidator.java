@@ -1,9 +1,9 @@
 package co.chess.consolechess.utils;
 
-import co.chess.consolechess.UserInputType;
-import co.chess.consolechess.exception.InvalidMoveCommandException;
-import co.chess.consolechess.exception.InvalidPromotionCommandException;
-import co.chess.consolechess.ui.InputView;
+import co.chess.consolechess.ui.input.UserInputType;
+import co.chess.consolechess.ui.input.exception.InvalidMoveCommandException;
+import co.chess.consolechess.ui.input.exception.InvalidPromotionCommandException;
+import co.chess.consolechess.ui.input.InputView;
 
 import java.util.Arrays;
 

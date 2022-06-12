@@ -1,6 +1,6 @@
 package co.chess.consolechess.utils;
 
-import co.chess.consolechess.exception.InvalidMoveCommandException;
+import co.chess.consolechess.ui.input.exception.InvalidMoveCommandException;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;

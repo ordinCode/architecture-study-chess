@@ -1,7 +1,7 @@
 package co.chess.consolechess.port.in;
 
 import co.chess.chess.piece.PieceType;
-import co.chess.consolechess.ui.InputView;
+import co.chess.consolechess.ui.input.InputView;
 import co.chess.consolechess.utils.CommandValidator;
 import co.chess.consolechess.utils.PieceSymbolConverter;
 

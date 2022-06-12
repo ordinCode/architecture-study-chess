@@ -6,11 +6,8 @@ import co.chess.chess.chessboard.tile.Rank;
 import java.util.Objects;
 
 public class TileDto {
-    private Rank rank;
-    private File file;
-
-    public TileDto() {
-    }
+    private final Rank rank;
+    private final File file;
 
     public TileDto(Rank rank, File file) {
         this.rank = rank;

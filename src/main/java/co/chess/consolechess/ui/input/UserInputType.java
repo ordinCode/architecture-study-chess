@@ -1,6 +1,6 @@
-package co.chess.consolechess;
+package co.chess.consolechess.ui.input;
 
-import co.chess.consolechess.exception.InputException;
+import co.chess.consolechess.ui.input.exception.InputException;
 
 import java.util.Arrays;
 

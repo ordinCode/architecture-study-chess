@@ -46,12 +46,12 @@ public class PromotionChecker {
                 .anyMatch(tile -> canPromotion(board, tile, Team.WHITE));
     }
 
-    private static boolean canPromotion(Map<Tile, Piece> board, Tile tile, Team tem) {
+    private static boolean canPromotion(Map<Tile, Piece> board, Tile tile, Team team) {
         Piece piece = board.get(tile);
         if (piece == null) {
             return false;
         }
-        return piece.getType() == PieceType.PAWN && piece.getTeam() == tem;
+        return piece.getType() == PieceType.PAWN && piece.getTeam() == team;
     }
 
     private static boolean existBlackPromotionPawn(Map<Tile, Piece> board) {
