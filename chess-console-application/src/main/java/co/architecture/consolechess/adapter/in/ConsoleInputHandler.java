@@ -6,6 +6,7 @@ import co.architecture.consolechess.ui.input.UserInputMapper;
 import co.architecture.consolechess.ui.input.UserInputType;
 import co.architecture.consolechess.ui.input.exception.InputException;
 import co.architecture.chess.exception.move.MoveException;
+import co.architecture.consolechess.ui.output.OutputView;
 
 public class ConsoleInputHandler {
     private final ConsoleChessController consoleChessController;
@@ -25,6 +26,10 @@ public class ConsoleInputHandler {
             if (userInputType == UserInputType.PROMOTION) {
                 PromotionCommand promotionCommand = PromotionCommand.from(userInput);
                 consoleChessController.promotion(promotionCommand);
+            }
+            if (userInputType == UserInputType.LOAD) {
+                OutputView.printLoadMessage();
+                consoleChessController.load();
             }
         } catch (MoveException | InputException e) {
             System.out.println(e.getMessage());

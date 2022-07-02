@@ -1,16 +1,19 @@
 package co.architecture.chess.chessboard;
 
-import co.architecture.chess.piece.PieceType;
-import co.architecture.chess.piece.Team;
 import co.architecture.chess.chessboard.tile.Rank;
 import co.architecture.chess.chessboard.tile.Tile;
 import co.architecture.chess.move.config.MovePattern;
 import co.architecture.chess.move.special.config.SpecialMovePattern;
 import co.architecture.chess.move.special.pawn.move.PawnMove;
+import co.architecture.chess.piece.PieceType;
+import co.architecture.chess.piece.Team;
 import co.architecture.chess.piece.config.Piece;
 import co.architecture.chess.utils.PromotionChecker;
+import com.google.gson.Gson;
 
+import java.io.Serializable;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 
 public class ChessBoard {
@@ -83,5 +86,22 @@ public class ChessBoard {
 
     public Map<Tile, Piece> getBoard() {
         return board;
+    }
+
+    public Tile getJustNowPawnJumpedTile() {
+        return justNowPawnJumpedTile;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ChessBoard that = (ChessBoard) o;
+        return Objects.equals(getBoard(), that.getBoard()) && Objects.equals(justNowPawnJumpedTile, that.justNowPawnJumpedTile);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getBoard(), justNowPawnJumpedTile);
     }
 }

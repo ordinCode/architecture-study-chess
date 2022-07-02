@@ -2,6 +2,7 @@ package co.architecture.consolechess.utils;
 
 import co.architecture.chess.piece.PieceType;
 import co.architecture.chess.piece.Team;
+import co.architecture.chess.piece.config.Piece;
 import co.architecture.consolechess.dto.PieceDto;
 
 import java.util.HashMap;
@@ -17,6 +18,14 @@ public class PieceSymbolConverter {
         mapper.put(PieceType.KNIGHT, "n");
         mapper.put(PieceType.ROOK, "r");
         mapper.put(PieceType.PAWN, "p");
+    }
+
+    public static String toSymbol(Piece piece) {
+        String pieceInitial = mapper.get(piece.getType());
+        if (piece.getTeam() == Team.WHITE) {
+            return pieceInitial.toUpperCase();
+        }
+        return pieceInitial;
     }
 
     public static String toSymbol(PieceDto pieceDto) {

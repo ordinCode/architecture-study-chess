@@ -12,4 +12,8 @@ public class ConsoleChessGameFactory {
         }
         return chessGame;
     }
+
+    public static void updateChessGame(ChessGame chessGame) {
+        getInstance().updateChessGame(chessGame);
+    }
 }

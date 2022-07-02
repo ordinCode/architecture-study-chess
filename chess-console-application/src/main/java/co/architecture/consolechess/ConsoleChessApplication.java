@@ -4,6 +4,10 @@ import co.architecture.chess.ChessGame;
 import co.architecture.chess.exception.move.MoveException;
 import co.architecture.consolechess.adapter.in.ConsoleChessController;
 import co.architecture.consolechess.adapter.in.ConsoleInputHandler;
+import co.architecture.consolechess.adapter.out.persistant.ChessGameDao;
+import co.architecture.consolechess.adapter.out.persistant.entity.ChessGamePersistenceAdaptor;
+import co.architecture.consolechess.application.port.in.GetChessGameQuery;
+import co.architecture.consolechess.application.service.ConsoleChessQueryService;
 import co.architecture.consolechess.dto.ChessBoardDto;
 import co.architecture.consolechess.gamefacory.ConsoleChessGameFactory;
 import co.architecture.consolechess.application.port.in.ChessMoveUseCase;
@@ -16,8 +20,13 @@ import co.architecture.consolechess.ui.input.exception.InputException;
 
 public class ConsoleChessApplication {
     public static void main(String[] args) {
-        ChessMoveUseCase consoleChessService = new ConsoleChessService();
-        ConsoleChessController consoleChessController = new ConsoleChessController(consoleChessService);
+        ChessGameDao chessGameDao = ChessGameDao.getInstance();
+        ChessGamePersistenceAdaptor chessGamePersistenceAdaptor = new ChessGamePersistenceAdaptor(chessGameDao);
+
+        ChessMoveUseCase consoleChessService = new ConsoleChessService(chessGamePersistenceAdaptor);
+        GetChessGameQuery consoleChessQueryService = new ConsoleChessQueryService(chessGamePersistenceAdaptor);
+        ConsoleChessController consoleChessController = new ConsoleChessController(consoleChessService, consoleChessQueryService);
+
         ConsoleInputHandler consoleInputHandler = new ConsoleInputHandler(consoleChessController);
 
         OutputView.printIntro();
@@ -26,14 +35,15 @@ public class ConsoleChessApplication {
 
         OutputView.printMoveGuide();
         while (!chessGame.isEnd()) {
-            progressChess(consoleInputHandler, chessGame);
+            progressChess(consoleInputHandler);
         }
 
         OutputView.printGameOver(chessGame.getWinner());
     }
 
-    private static void progressChess(ConsoleInputHandler consoleInputHandler, ChessGame chessGame) {
+    private static void progressChess(ConsoleInputHandler consoleInputHandler) {
         try {
+            ChessGame chessGame = ConsoleChessGameFactory.getInstance();
             if (chessGame.isPromotion()) {
                 OutputView.promotionGuide();
             }

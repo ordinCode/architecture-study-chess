@@ -7,4 +7,8 @@ public class StringUtil {
         }
         return k.trim().length() == 0;
     }
+
+    public static boolean isUpperCase(String input) {
+        return input.toUpperCase().equals(input);
+    }
 }

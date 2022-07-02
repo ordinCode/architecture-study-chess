@@ -9,12 +9,14 @@ import co.architecture.chess.piece.Team;
 import co.architecture.chess.rule.ChessRule;
 
 public class ChessGame {
-    private final ChessBoard chessBoard;
-    private final ChessRule chessRule;
+    private Long id;
+    private ChessBoard chessBoard;
+    private ChessRule chessRule;
     private GameState gameState;
     private Team turn;
 
-    private ChessGame(GameState gameState, Team turn, ChessBoard chessBoard, ChessRule chessRule) {
+    public ChessGame(Long id, GameState gameState, Team turn, ChessBoard chessBoard, ChessRule chessRule) {
+        this.id = id;
         this.gameState = gameState;
         this.turn = turn;
         this.chessBoard = chessBoard;
@@ -23,6 +25,7 @@ public class ChessGame {
 
     public static ChessGame init(ChessRule chessRule) {
         return new ChessGame(
+                null,
                 GameState.RUNNING,
                 chessRule.getFirstTurn(),
                 ChessBoard.init(chessRule.settingInitChessBoard()),
@@ -81,6 +84,14 @@ public class ChessGame {
         return chessBoard.isPromotion();
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public ChessRule getChessRule() {
+        return chessRule;
+    }
+
     public ChessBoard getChessBoard() {
         return chessBoard;
     }
@@ -91,5 +102,13 @@ public class ChessGame {
 
     public Team getTurn() {
         return turn;
+    }
+
+    public void updateChessGame(ChessGame chessGame) {
+        this.id = chessGame.getId();
+        this.chessBoard = chessGame.getChessBoard();
+        this.chessRule = chessGame.getChessRule();
+        this.gameState = chessGame.getGameState();
+        this.turn = chessGame.getTurn();
     }
 }

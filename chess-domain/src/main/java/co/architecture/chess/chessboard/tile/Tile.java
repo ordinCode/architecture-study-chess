@@ -56,4 +56,9 @@ public class Tile {
     public int hashCode() {
         return Objects.hash(getRank(), getFile());
     }
+
+    @Override
+    public String toString() {
+        return file.getSymbol() + rank.getSymbol();
+    }
 }

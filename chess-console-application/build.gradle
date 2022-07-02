@@ -1,5 +1,6 @@
 dependencies {
     implementation project(":chess-domain")
+    implementation project(":chess-jdbc")
     implementation project(":common")
 }
 

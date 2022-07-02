@@ -15,7 +15,8 @@ import java.util.Optional;
 
 public class OutputView {
     private static final String INTRO = "> 체스 게임을 시작합니다.\n" +
-            "종료는 end 명령을 입력하세요.";
+            "게임 불러오기는 'load'\n" +
+            "종료는 'end' 명령을 입력하세요.";
     public static final String GAME_MOVE_GUIDE = "게임 이동 : move source위치 target위치 - 예. move b2 b3\n" +
             "**캐슬링 : move kingSource kingTarget - 예. move e8 g8";
     public static final String PROMOTION_GUIDE = "프로모션을 진행해주세요\n" +
@@ -24,6 +25,7 @@ public class OutputView {
 
     private static final String NONE_PIECE_MARK = ".";
     private static final String PADDING = " ";
+    public static final String LOAD_MESSAGE = "이전 게임을 불러옵니다.";
 
     public static void printIntro() {
         System.out.println(INTRO);
@@ -63,5 +65,9 @@ public class OutputView {
             System.out.printf("우승자는 %s팀\n", winner);
         }
         System.out.println("게임을 종료합니다.");
+    }
+
+    public static void printLoadMessage() {
+        System.out.println(LOAD_MESSAGE);
     }
 }

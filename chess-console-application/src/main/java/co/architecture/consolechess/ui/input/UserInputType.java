@@ -8,6 +8,7 @@ public enum UserInputType {
     START("start"),
     END("end"),
     MOVE("move"),
+    LOAD("load"),
     PROMOTION("promotion");
 
     private final String command;
