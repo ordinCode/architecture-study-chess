@@ -1,0 +1,10 @@
+jar { enabled = true }
+
+group 'co.architecture.jdbc'
+version '1'
+
+dependencies {
+    runtimeOnly group: 'com.h2database', name: 'h2', version: '1.4.200'
+    implementation group: 'org.apache.commons', name: 'commons-dbcp2', version: '2.9.0'
+
+}
