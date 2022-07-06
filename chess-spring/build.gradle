@@ -1,0 +1,31 @@
+plugins {
+    id 'org.springframework.boot' version '2.6.7'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group 'co.architecture.spring'
+version '1'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    api project(":chess-persistance:jpa")
+
+    implementation project(':chess-domain')
+    implementation project(':common')
+    implementation project(":chess-api-out")
+
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+}
+
+test {
+    useJUnitPlatform()
+}

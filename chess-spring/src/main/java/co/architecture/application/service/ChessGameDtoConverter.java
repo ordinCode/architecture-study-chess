@@ -1,4 +1,4 @@
-package co.architecture.consolechess.application.service;
+package co.architecture.application.service;
 
 import co.architecture.application.port.out.dto.ChessGameDto;
 import co.architecture.chess.ChessGame;
@@ -16,10 +16,11 @@ import co.architecture.common.StringUtil;
 import java.util.HashMap;
 import java.util.Map;
 
-class ChessGameMapper {
+class ChessGameDtoConverter {
     static ChessGame toChessGame(ChessGameDto chessGameDto) {
-        Map<Tile, Piece> board = BoardConverter.toTilePieceMap(chessGameDto.getBoard());
-        ChessBoard chessBoard = new ChessBoard(board, TileFactory.from(chessGameDto.getJustNowPawnJumpedTile()));
+        Map<Tile, Piece> boardWithTile = BoardConverter.toTilePieceMap(chessGameDto.getBoard());
+        String jumpedTile = chessGameDto.getJustNowPawnJumpedTile();
+        ChessBoard chessBoard = new ChessBoard(boardWithTile, TileFactory.from(jumpedTile));
         return new ChessGame(
                 chessGameDto.getId(),
                 GameState.valueOf(chessGameDto.getGameState()),
@@ -28,4 +29,17 @@ class ChessGameMapper {
                 ChessRuleType.valueOf(chessGameDto.getChessRuleType())
         );
     }
+
+    static ChessGameDto toDto(ChessGame chessGame) {
+        Map<String, String> board = BoardConverter.toStringStringMap(chessGame.getChessBoard().getBoard());
+        return new ChessGameDto(
+                chessGame.getId(),
+                chessGame.getChessRuleType().name(),
+                chessGame.getGameState().name(),
+                chessGame.getTurn().name(),
+                board,
+                chessGame.getChessBoard().getJustNowPawnJumpedTile().toString()
+        );
+    }
+
 }

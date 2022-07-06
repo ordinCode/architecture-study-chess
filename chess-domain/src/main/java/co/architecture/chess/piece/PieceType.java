@@ -32,6 +32,13 @@ public enum PieceType {
                 .orElseThrow(IllegalArgumentException::new);
     }
 
+    public String getSymbolByTeam(Team team) {
+        if (team == Team.WHITE) {
+            return this.symbol.toUpperCase();
+        }
+        return this.symbol;
+    }
+
     public String getSymbol() {
         return symbol;
     }

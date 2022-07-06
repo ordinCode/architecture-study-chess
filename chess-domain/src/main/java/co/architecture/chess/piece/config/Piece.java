@@ -31,6 +31,10 @@ public abstract class Piece {
         return type;
     }
 
+    public String toSymbol() {
+        return type.getSymbolByTeam(team);
+    }
+
     public boolean equalsBy(Team team, PieceType pieceType) {
         return this.team == team && this.type == pieceType;
     }

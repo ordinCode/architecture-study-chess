@@ -1,0 +1,36 @@
+spring:
+  profiles:
+    active: local
+---
+spring:
+  profiles: local
+  datasource:
+    url: jdbc:mysql://localhost:3306/chess?allowPublicKeyRetrieval=true&characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false&cacheDefaultTimezone=false
+    username: root
+    password: dldntjs
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: true
+    generate-ddl: true
+---
+spring:
+  profiles: test
+  datasource:
+    hikari:
+      driver-class-name: org.h2.Driver
+      jdbc-url: jdbc:h2:mem:myfair
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: true
+    generate-ddl: true

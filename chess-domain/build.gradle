@@ -2,3 +2,7 @@ jar { enabled = true }
 
 group 'co.architecture.domain'
 version '1'
+
+dependencies {
+    implementation project(':common')
+}

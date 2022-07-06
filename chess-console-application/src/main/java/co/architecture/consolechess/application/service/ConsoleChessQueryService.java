@@ -15,7 +15,7 @@ public class ConsoleChessQueryService implements LoadChessGame {
 
     @Override
     public void getChessGame() {
-        ChessGameDto chessGameDto = chessGamePersistenceAdaptor.loadGame();
+        ChessGameDto chessGameDto = chessGamePersistenceAdaptor.loadGame(null);
         ChessGame chessGame = ChessGameMapper.toChessGame(chessGameDto);
         ConsoleChessGameFactory.updateChessGame(chessGame);
     }

@@ -22,7 +22,7 @@ public class ChessGamePersistenceAdaptor implements SaveChessGamePort, LoadChess
     }
 
     @Override
-    public ChessGameDto loadGame() {
+    public ChessGameDto loadGame(Long chessGameId) {
         ChessGameJdbcEntity jdbcEntity = chessGameDao.load();
         return ChessGameMapper.toChessGameDto(jdbcEntity);
     }
