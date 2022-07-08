@@ -1,10 +1,10 @@
 package co.architecture.consolechess.adapter.out.persistant.entity;
 
-import co.architecture.chess.ChessGame;
+import co.architecture.application.port.out.dto.ChessGameDto;
 import co.architecture.consolechess.adapter.out.persistant.ChessGameDao;
 import co.architecture.consolechess.adapter.out.persistant.ChessGameMapper;
-import co.architecture.consolechess.application.port.out.LoadChessGamePort;
-import co.architecture.consolechess.application.port.out.SaveChessGamePort;
+import co.architecture.application.port.out.LoadChessGamePort;
+import co.architecture.application.port.out.SaveChessGamePort;
 
 public class ChessGamePersistenceAdaptor implements SaveChessGamePort, LoadChessGamePort {
     private final ChessGameDao chessGameDao;
@@ -14,8 +14,8 @@ public class ChessGamePersistenceAdaptor implements SaveChessGamePort, LoadChess
     }
 
     @Override
-    public void saveChessGame(ChessGame chessGame) {
-        ChessGameJdbcEntity chessGameJdbcEntity = ChessGameMapper.toJdbcEntity(chessGame);
+    public void saveChessGame(ChessGameDto chessGamedto) {
+        ChessGameJdbcEntity chessGameJdbcEntity = ChessGameMapper.toJdbcEntity(chessGamedto);
         if (chessGameDao.existSavedGame()) {
             chessGameDao.update(chessGameJdbcEntity);
             return;
@@ -24,8 +24,8 @@ public class ChessGamePersistenceAdaptor implements SaveChessGamePort, LoadChess
     }
 
     @Override
-    public ChessGame loadGame() {
+    public ChessGameDto loadGame() {
         ChessGameJdbcEntity jdbcEntity = chessGameDao.load();
-        return ChessGameMapper.toDomainEntity(jdbcEntity);
+        return ChessGameMapper.toChessGameDto(jdbcEntity);
     }
 }

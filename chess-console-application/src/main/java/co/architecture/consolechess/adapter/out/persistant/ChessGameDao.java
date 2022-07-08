@@ -47,9 +47,9 @@ public class ChessGameDao {
         jdbcTemplate.executeUpdate(
                 sql,
                 TEMP_CONSOLE_GAME_ID,
-                entity.getChessRuleType().name(),
-                entity.getGameState().name(),
-                entity.getTurn().name(),
+                entity.getChessRuleType(),
+                entity.getGameState(),
+                entity.getTurn(),
                 entity.getBoardPayload(),
                 entity.getJustNowPawnJumpedTilePayload()
         );
@@ -59,9 +59,9 @@ public class ChessGameDao {
         String sql = String.format("UPDATE %s SET chessRuleType=?,gameState=?,turn=?,boardPayload=?,justNowPawnJumpedTilePayload=? WHERE id=?", CHESS_BOARD_TABLE_NAME);
         jdbcTemplate.executeUpdate(
                 sql,
-                entity.getChessRuleType().name(),
-                entity.getGameState().name(),
-                entity.getTurn().name(),
+                entity.getChessRuleType(),
+                entity.getGameState(),
+                entity.getTurn(),
                 entity.getBoardPayload(),
                 entity.getJustNowPawnJumpedTilePayload(),
                 TEMP_CONSOLE_GAME_ID
@@ -90,9 +90,9 @@ public class ChessGameDao {
             String boardPayload = rs.getString("boardPayload");
             String justNowPawnJumpedTilePayload = rs.getString("justNowPawnJumpedTilePayload");
             return new ChessGameJdbcEntity(id,
-                    ChessRuleType.valueOf(chessRuleType),
-                    GameState.valueOf(gameState),
-                    Team.valueOf(turn),
+                    chessRuleType,
+                    gameState,
+                    turn,
                     boardPayload,
                     justNowPawnJumpedTilePayload
             );

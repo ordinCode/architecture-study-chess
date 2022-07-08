@@ -1,32 +1,29 @@
 package co.architecture.consolechess.adapter.out.persistant;
 
-import co.architecture.chess.ChessGame;
-import co.architecture.chess.chessboard.ChessBoard;
+import co.architecture.application.port.out.dto.ChessGameDto;
 import co.architecture.consolechess.adapter.out.persistant.entity.ChessGameJdbcEntity;
-import com.google.gson.Gson;
 
 public class ChessGameMapper {
-    public static ChessGame toDomainEntity(ChessGameJdbcEntity chessGameJdbcEntity) {
+    public static ChessGameDto toChessGameDto(ChessGameJdbcEntity chessGameJdbcEntity) {
         String boardPayload = chessGameJdbcEntity.getBoardPayload();
-        String justNowPawnJumpedTilePayload = chessGameJdbcEntity.getJustNowPawnJumpedTilePayload();
-        ChessBoard chessBoard = ChessBoardConverter.toChessBoard(boardPayload, justNowPawnJumpedTilePayload);
-        return new ChessGame(
+        return new ChessGameDto(
                 chessGameJdbcEntity.getId(),
+                chessGameJdbcEntity.getChessRuleType(),
                 chessGameJdbcEntity.getGameState(),
                 chessGameJdbcEntity.getTurn(),
-                chessBoard,
-                chessGameJdbcEntity.getChessRuleType()
+                ChessBoardConverter.toBoardMap(boardPayload),
+                chessGameJdbcEntity.getJustNowPawnJumpedTilePayload()
         );
     }
 
-    public static ChessGameJdbcEntity toJdbcEntity(ChessGame chessGame) {
+    public static ChessGameJdbcEntity toJdbcEntity(ChessGameDto chessGame) {
         return new ChessGameJdbcEntity(
                 chessGame.getId(),
                 chessGame.getChessRuleType(),
                 chessGame.getGameState(),
                 chessGame.getTurn(),
-                ChessBoardConverter.toBoardPayload(chessGame.getChessBoard()),
-                new Gson().toJson(chessGame.getChessBoard().getJustNowPawnJumpedTile())
+                ChessBoardConverter.toBoardPayload(chessGame.getBoard()),
+                chessGame.getJustNowPawnJumpedTile()
         );
     }
 }

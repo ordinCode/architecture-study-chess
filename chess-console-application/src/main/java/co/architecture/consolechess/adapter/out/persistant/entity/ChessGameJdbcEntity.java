@@ -6,13 +6,13 @@ import co.architecture.chess.rule.ChessRuleType;
 
 public class ChessGameJdbcEntity {
     private Long id;
-    private ChessRuleType chessRuleType;
-    private GameState gameState;
-    private Team turn;
+    private String chessRuleType;
+    private String gameState;
+    private String turn;
     private String boardPayload;
     private String justNowPawnJumpedTilePayload;
 
-    public ChessGameJdbcEntity(Long id, ChessRuleType chessRuleType, GameState gameState, Team turn, String boardPayload, String justNowPawnJumpedTilePayload) {
+    public ChessGameJdbcEntity(Long id, String chessRuleType, String gameState, String turn, String boardPayload, String justNowPawnJumpedTilePayload) {
         this.id = id;
         this.chessRuleType = chessRuleType;
         this.gameState = gameState;
@@ -25,15 +25,15 @@ public class ChessGameJdbcEntity {
         return id;
     }
 
-    public ChessRuleType getChessRuleType() {
+    public String getChessRuleType() {
         return chessRuleType;
     }
 
-    public GameState getGameState() {
+    public String getGameState() {
         return gameState;
     }
 
-    public Team getTurn() {
+    public String getTurn() {
         return turn;
     }
 
