@@ -18,6 +18,7 @@ import co.architecture.chess.piece.PieceType;
 import co.architecture.chess.piece.Queen;
 import co.architecture.chess.piece.Rook;
 import co.architecture.chess.piece.Team;
+import co.architecture.chess.rule.ChessRuleType;
 import co.architecture.chess.rule.defaultrule.DefaultChessRule;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DynamicTest;
@@ -45,7 +46,7 @@ public class ChessAcceptanceTest {
          * 1 R  N  B  Q  K  B  N  R
          *   a  b  c  d  e  f  g  h
          */
-        ChessGame chessGame = ChessGame.init(new DefaultChessRule());
+        ChessGame chessGame = ChessGame.init(ChessRuleType.DEFAULT);
         체크보드초기화됨(chessGame);
 
         return Stream.of(

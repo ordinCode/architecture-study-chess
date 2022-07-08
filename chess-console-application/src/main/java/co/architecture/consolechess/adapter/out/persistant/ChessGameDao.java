@@ -3,7 +3,7 @@ package co.architecture.consolechess.adapter.out.persistant;
 import co.architecture.chess.GameState;
 import co.architecture.chess.piece.Team;
 import co.architecture.consolechess.adapter.out.persistant.entity.ChessGameJdbcEntity;
-import co.architecture.consolechess.adapter.out.persistant.entity.ChessRuleType;
+import co.architecture.chess.rule.ChessRuleType;
 import co.architecture.jdbc.ConnectionManager;
 import co.architecture.jdbc.JdbcTemplate;
 import co.architecture.jdbc.RowMapper;

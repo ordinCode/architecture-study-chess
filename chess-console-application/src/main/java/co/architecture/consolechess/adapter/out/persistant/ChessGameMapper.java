@@ -3,7 +3,6 @@ package co.architecture.consolechess.adapter.out.persistant;
 import co.architecture.chess.ChessGame;
 import co.architecture.chess.chessboard.ChessBoard;
 import co.architecture.consolechess.adapter.out.persistant.entity.ChessGameJdbcEntity;
-import co.architecture.consolechess.adapter.out.persistant.entity.ChessRuleType;
 import com.google.gson.Gson;
 
 public class ChessGameMapper {
@@ -16,14 +15,14 @@ public class ChessGameMapper {
                 chessGameJdbcEntity.getGameState(),
                 chessGameJdbcEntity.getTurn(),
                 chessBoard,
-                chessGameJdbcEntity.getChessRuleType().getChessRule()
+                chessGameJdbcEntity.getChessRuleType()
         );
     }
 
     public static ChessGameJdbcEntity toJdbcEntity(ChessGame chessGame) {
         return new ChessGameJdbcEntity(
                 chessGame.getId(),
-                ChessRuleType.ofClass(chessGame.getChessRule().getClass()),
+                chessGame.getChessRuleType(),
                 chessGame.getGameState(),
                 chessGame.getTurn(),
                 ChessBoardConverter.toBoardPayload(chessGame.getChessBoard()),

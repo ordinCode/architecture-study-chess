@@ -2,6 +2,7 @@ package co.architecture.consolechess.adapter.out.persistant.entity;
 
 import co.architecture.chess.GameState;
 import co.architecture.chess.piece.Team;
+import co.architecture.chess.rule.ChessRuleType;
 
 public class ChessGameJdbcEntity {
     private Long id;

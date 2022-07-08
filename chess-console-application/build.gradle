@@ -2,6 +2,7 @@ dependencies {
     implementation project(":chess-domain")
     implementation project(":chess-persistance:jdbc")
     implementation project(":common")
+    implementation project(":chess-api-out")
 }
 
 group 'co.architecture.console'

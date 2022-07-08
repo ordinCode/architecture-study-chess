@@ -1,6 +1,5 @@
-package co.architecture.consolechess.adapter.out.persistant.entity;
+package co.architecture.chess.rule;
 
-import co.architecture.chess.rule.ChessRule;
 import co.architecture.chess.rule.defaultrule.DefaultChessRule;
 
 import java.util.Arrays;

@@ -7,28 +7,29 @@ import co.architecture.chess.exception.move.MoveException;
 import co.architecture.chess.piece.PieceType;
 import co.architecture.chess.piece.Team;
 import co.architecture.chess.rule.ChessRule;
+import co.architecture.chess.rule.ChessRuleType;
 
 public class ChessGame {
     private Long id;
     private ChessBoard chessBoard;
-    private ChessRule chessRule;
+    private ChessRuleType chessRuleType;
     private GameState gameState;
     private Team turn;
 
-    public ChessGame(Long id, GameState gameState, Team turn, ChessBoard chessBoard, ChessRule chessRule) {
+    public ChessGame(Long id, GameState gameState, Team turn, ChessBoard chessBoard, ChessRuleType chessRuleType) {
         this.id = id;
         this.gameState = gameState;
         this.turn = turn;
         this.chessBoard = chessBoard;
-        this.chessRule = chessRule;
+        this.chessRuleType = chessRuleType;
     }
 
-    public static ChessGame init(ChessRule chessRule) {
+    public static ChessGame init(ChessRuleType chessRule) {
         return new ChessGame(
                 null,
                 GameState.RUNNING,
-                chessRule.getFirstTurn(),
-                ChessBoard.init(chessRule.settingInitChessBoard()),
+                chessRule.getChessRule().getFirstTurn(),
+                ChessBoard.init(chessRule.getChessRule().settingInitChessBoard()),
                 chessRule
         );
     }
@@ -37,7 +38,7 @@ public class ChessGame {
         validate(source);
         chessBoard.move(source, target);
 
-        if (chessRule.isGameOver(chessBoard.getBoard())) {
+        if (chessRuleType.getChessRule().isGameOver(chessBoard.getBoard())) {
             gameState = GameState.END;
             return;
         }
@@ -65,7 +66,7 @@ public class ChessGame {
         if (gameState != GameState.END) {
             return null;
         }
-        return chessRule.findWinner(chessBoard.getBoard()).name();
+        return chessRuleType.getChessRule().findWinner(chessBoard.getBoard()).name();
     }
 
     public void changeTurn() {
@@ -74,6 +75,14 @@ public class ChessGame {
             return;
         }
         turn = Team.BLACK;
+    }
+
+    public void updateChessGame(ChessGame chessGame) {
+        this.id = chessGame.getId();
+        this.chessBoard = chessGame.getChessBoard();
+        this.chessRuleType = chessGame.getChessRuleType();
+        this.gameState = chessGame.getGameState();
+        this.turn = chessGame.getTurn();
     }
 
     public void promotion(PieceType pieceType) {
@@ -88,8 +97,8 @@ public class ChessGame {
         return id;
     }
 
-    public ChessRule getChessRule() {
-        return chessRule;
+    public ChessRuleType getChessRuleType() {
+        return this.chessRuleType;
     }
 
     public ChessBoard getChessBoard() {
@@ -102,13 +111,5 @@ public class ChessGame {
 
     public Team getTurn() {
         return turn;
-    }
-
-    public void updateChessGame(ChessGame chessGame) {
-        this.id = chessGame.getId();
-        this.chessBoard = chessGame.getChessBoard();
-        this.chessRule = chessGame.getChessRule();
-        this.gameState = chessGame.getGameState();
-        this.turn = chessGame.getTurn();
     }
 }

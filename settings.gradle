@@ -3,4 +3,5 @@ include 'chess-domain'
 include 'chess-console-application'
 include 'common'
 include 'chess-persistance:jdbc'
+include 'chess-api-out'
 
