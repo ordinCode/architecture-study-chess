@@ -2,11 +2,11 @@ package co.architecture.consolechess.application.service;
 
 import co.architecture.application.port.out.dto.ChessGameDto;
 import co.architecture.chess.ChessGame;
+import co.architecture.consolechess.gamefacory.ConsoleChessGameFactory;
 import co.architecture.jdbc.chessgame.ChessGamePersistenceAdaptor;
-import co.architecture.consolechess.application.ChessGameMapper;
-import co.architecture.consolechess.application.port.in.GetChessGameQuery;
+import co.architecture.consolechess.application.port.in.LoadChessGame;
 
-public class ConsoleChessQueryService implements GetChessGameQuery {
+public class ConsoleChessQueryService implements LoadChessGame {
     private final ChessGamePersistenceAdaptor chessGamePersistenceAdaptor;
 
     public ConsoleChessQueryService(ChessGamePersistenceAdaptor chessGamePersistenceAdaptor) {
@@ -14,8 +14,9 @@ public class ConsoleChessQueryService implements GetChessGameQuery {
     }
 
     @Override
-    public ChessGame getChessGame() {
+    public void getChessGame() {
         ChessGameDto chessGameDto = chessGamePersistenceAdaptor.loadGame();
-        return ChessGameMapper.toChessGame(chessGameDto);
+        ChessGame chessGame = ChessGameMapper.toChessGame(chessGameDto);
+        ConsoleChessGameFactory.updateChessGame(chessGame);
     }
 }

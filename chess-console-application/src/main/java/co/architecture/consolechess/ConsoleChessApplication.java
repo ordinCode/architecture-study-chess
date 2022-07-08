@@ -6,7 +6,7 @@ import co.architecture.consolechess.adapter.in.ConsoleChessController;
 import co.architecture.consolechess.adapter.in.ConsoleInputHandler;
 import co.architecture.jdbc.chessgame.ChessGameDao;
 import co.architecture.jdbc.chessgame.ChessGamePersistenceAdaptor;
-import co.architecture.consolechess.application.port.in.GetChessGameQuery;
+import co.architecture.consolechess.application.port.in.LoadChessGame;
 import co.architecture.consolechess.application.service.ConsoleChessQueryService;
 import co.architecture.consolechess.dto.ChessBoardDto;
 import co.architecture.consolechess.gamefacory.ConsoleChessGameFactory;
@@ -24,8 +24,8 @@ public class ConsoleChessApplication {
         ChessGamePersistenceAdaptor chessGamePersistenceAdaptor = new ChessGamePersistenceAdaptor(chessGameDao);
 
         ChessMoveUseCase consoleChessService = new ConsoleChessService(chessGamePersistenceAdaptor);
-        GetChessGameQuery consoleChessQueryService = new ConsoleChessQueryService(chessGamePersistenceAdaptor);
-        ConsoleChessController consoleChessController = new ConsoleChessController(consoleChessService, consoleChessQueryService);
+        LoadChessGame loadChessGameService = new ConsoleChessQueryService(chessGamePersistenceAdaptor);
+        ConsoleChessController consoleChessController = new ConsoleChessController(consoleChessService, loadChessGameService);
 
         ConsoleInputHandler consoleInputHandler = new ConsoleInputHandler(consoleChessController);
 

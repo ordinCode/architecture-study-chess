@@ -20,7 +20,7 @@ class ChessBoardConverterTest {
                 "a1", "p",
                 "b2", "Q",
                 "c3", "K",
-                "d6", "K"
+                "d6", "k"
         ));
     }
 
@@ -32,7 +32,7 @@ class ChessBoardConverterTest {
         chessBoard.put("a1", "p");
         chessBoard.put("b2", "Q");
         chessBoard.put("c3", "K");
-        chessBoard.put("d6", "K");
+        chessBoard.put("d6", "k");
 
         //when
         String boardPayload = ChessBoardConverter.toBoardPayload(chessBoard);

@@ -1,4 +1,4 @@
-package co.architecture.consolechess.application;
+package co.architecture.consolechess.application.service;
 
 import co.architecture.application.port.out.dto.ChessGameDto;
 import co.architecture.chess.ChessGame;
@@ -15,8 +15,8 @@ import co.architecture.common.StringUtil;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ChessGameMapper {
-    public static ChessGame toChessGame(ChessGameDto chessGameDto) {
+class ChessGameMapper {
+    static ChessGame toChessGame(ChessGameDto chessGameDto) {
         Map<Tile, Piece> board = new HashMap<>();
         for (Map.Entry<String, String> boardEntry : chessGameDto.getBoard().entrySet()) {
             String pieceType = boardEntry.getValue();
