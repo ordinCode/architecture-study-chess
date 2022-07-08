@@ -2,5 +2,5 @@ rootProject.name = 'architecture-study-chess'
 include 'chess-domain'
 include 'chess-console-application'
 include 'common'
-include 'chess-jdbc'
+include 'chess-persistance:jdbc'
 

@@ -4,8 +4,6 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.sql.SQLException;
-
 class JdbcTemplateTest {
     @DisplayName("테이블 생성 테스트")
     @Test
