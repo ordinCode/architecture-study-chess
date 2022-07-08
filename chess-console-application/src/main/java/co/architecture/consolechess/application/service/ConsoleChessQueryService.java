@@ -2,7 +2,7 @@ package co.architecture.consolechess.application.service;
 
 import co.architecture.application.port.out.dto.ChessGameDto;
 import co.architecture.chess.ChessGame;
-import co.architecture.consolechess.adapter.out.persistant.entity.ChessGamePersistenceAdaptor;
+import co.architecture.jdbc.chessgame.ChessGamePersistenceAdaptor;
 import co.architecture.consolechess.application.ChessGameMapper;
 import co.architecture.consolechess.application.port.in.GetChessGameQuery;
 

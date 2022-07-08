@@ -1,4 +1,4 @@
-package co.architecture.consolechess.adapter.out.persistant;
+package co.architecture.jdbc.chessgame;
 
 import java.util.HashMap;
 import java.util.Map;

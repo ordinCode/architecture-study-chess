@@ -1,7 +1,6 @@
-package co.architecture.consolechess.adapter.out.persistant;
+package co.architecture.jdbc.chessgame;
 
 import co.architecture.application.port.out.dto.ChessGameDto;
-import co.architecture.consolechess.adapter.out.persistant.entity.ChessGameJdbcEntity;
 
 public class ChessGameMapper {
     public static ChessGameDto toChessGameDto(ChessGameJdbcEntity chessGameJdbcEntity) {

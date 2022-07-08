@@ -1,13 +1,6 @@
 package co.architecture.consolechess.adapter.out.persistant;
 
-import co.architecture.chess.chessboard.tile.File;
-import co.architecture.chess.chessboard.tile.Rank;
-import co.architecture.chess.chessboard.tile.Tile;
-import co.architecture.chess.piece.King;
-import co.architecture.chess.piece.Pawn;
-import co.architecture.chess.piece.Queen;
-import co.architecture.chess.piece.Team;
-import co.architecture.chess.piece.config.Piece;
+import co.architecture.jdbc.chessgame.ChessBoardConverter;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

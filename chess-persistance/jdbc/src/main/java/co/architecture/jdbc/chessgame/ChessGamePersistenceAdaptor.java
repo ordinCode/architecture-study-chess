@@ -1,10 +1,8 @@
-package co.architecture.consolechess.adapter.out.persistant.entity;
+package co.architecture.jdbc.chessgame;
 
-import co.architecture.application.port.out.dto.ChessGameDto;
-import co.architecture.consolechess.adapter.out.persistant.ChessGameDao;
-import co.architecture.consolechess.adapter.out.persistant.ChessGameMapper;
 import co.architecture.application.port.out.LoadChessGamePort;
 import co.architecture.application.port.out.SaveChessGamePort;
+import co.architecture.application.port.out.dto.ChessGameDto;
 
 public class ChessGamePersistenceAdaptor implements SaveChessGamePort, LoadChessGamePort {
     private final ChessGameDao chessGameDao;
