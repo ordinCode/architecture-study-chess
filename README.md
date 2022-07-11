@@ -8,6 +8,4 @@
 - step4. 콘솔 체스 게임에 DB를 연동해보면서 Hexagonal Architecture 구조로 설계해본다.
 - step5. Spring Framework 에 적용해본다.
 
-## Step2. 콘솔 체스 게임 (with DB)
-- Step1 에서 구현한 체스에 DB를 연동시킨다.
-- 어플리케이션 종류 후에 다시 실행시켜도 이전 상태를 유지할 수 있도록 한다.
+## Step5. Spring Framework 에 적용해본다.
